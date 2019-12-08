@@ -426,7 +426,7 @@ static int checkfileperm(char * filename) {
 		TRACE(("leave checkfileperm: stat() != 0"))
 		return DROPBEAR_FAILURE;
 	}
-#ifdef PUBKEY_RELAXED_PERMS
+#ifndef PUBKEY_RELAXED_PERMS
 	/* check ownership - user or root only*/
 	if (filestat.st_uid != ses.authstate.pw_uid
 			&& filestat.st_uid != 0) {
